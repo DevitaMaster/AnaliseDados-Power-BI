@@ -1,0 +1,40 @@
+Para restaurar o arquivo de backup AdventureWorksDW2020.bak no SQL Server 2022, siga os passos abaixo:
+
+Passos para restaurar o backup no SQL Server 2022:
+Abra o SQL Server Management Studio (SSMS):
+
+Inicie o SSMS e conecte-se à instância do seu SQL Server 2022. se não tiver o SSMS instalado, baixe https://learn.microsoft.com/pt-br/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16&redirectedfrom=MSDN    e instale.
+
+
+Acesse a opção de restauração:
+
+No Object Explorer, clique com o botão direito sobre a pasta Databases.
+Selecione a opção Restore Database....
+Escolha o arquivo de backup:
+
+Na janela de restauração, selecione a opção Device em vez de Database.
+Clique no botão com três pontos (...) ao lado do campo Device para abrir a janela Select backup devices.
+Na nova janela, clique em Add e navegue até o local onde está armazenado o arquivo AdventureWorksDW2020.bak. Selecione o arquivo e clique em OK.
+Verifique o nome do banco de dados:
+
+No campo Database, você verá o nome sugerido do banco de dados com base no backup (provavelmente "AdventureWorksDW2020"). Você pode alterar o nome, se desejar, ou manter o nome original.
+Opções de restauração:
+
+Na aba Files, certifique-se de que o caminho para os arquivos de dados e log (.mdf e .ldf) estejam corretos para a sua instância do SQL Server.
+Na aba Options, marque a opção Overwrite the existing database (WITH REPLACE) se o banco de dados já existir e você quiser sobrescrevê-lo.
+Verifique se a opção Restore with Recovery está selecionada (é o padrão), para que o banco de dados esteja pronto para uso imediatamente após a restauração.
+Inicie a restauração:
+
+Após configurar todas as opções, clique em OK para iniciar o processo de restauração.
+Verifique a restauração:
+
+Assim que a restauração for concluída com sucesso, uma mensagem será exibida. Você poderá ver o banco de dados restaurado na lista de Databases no Object Explorer.
+Verificação pós-restauração:
+Após a restauração, você pode testar se o banco de dados foi restaurado corretamente executando uma consulta simples, como:
+
+sql
+Copiar código
+USE AdventureWorksDW2020;
+GO
+SELECT TOP 10 * FROM DimCustomer;
+Isso vai garantir que o banco de dados foi restaurado e está acessível.
